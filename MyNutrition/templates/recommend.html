@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>MYNUTRITION</title>
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/css/noscript.css" /></noscript>
+    </head>
+    
+    <body class="is-preload">
+        <div id="wrapper">
+            <!-- Header -->
+					<header id="header" class="alt">
+						<a href="/" class="logo"><strong>SMWU</strong> <span>Software</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+            <!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="/">Home</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="/logout" class="button fit">Logout</a></li>
+						</ul>
+					</nav>
+            <!-- Main -->
+					<div id="main" class="alt">
+						<!-- One -->
+                                <section id="one">
+								    <div class="inner">
+                                        <header class="major">
+                                            <h1>부족한 영양소를 채워줄 음식</h1>
+                                            <blockquote>SELECT THE DATE</blockquote>
+                                        </header>
+                                        {% if length != 0%}{% for date in datelist %}
+                                        <a href = {{url_for("recommend2", date = date)}}><h2>{{date}}</h2></a>
+                                        {% endfor %}
+                                        {% else %}
+                                        <h2>음식을 등록해주세요.</h2>
+                                        {% endif %}
+                                    </div>
+                                </section>
+                    </div>
+            <!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="copyright">
+                                <li>김지민</li>
+								<li>정민서</li>
+							</ul>
+						</div>
+					</footer>
+        </div>
+        
+        <script src="static/js/jquery.min.js"></script>
+		<script src="static/js/jquery.scrolly.min.js"></script>
+		<script src="static/js/jquery.scrollex.min.js"></script>
+		<script src="static/js/browser.min.js"></script>
+		<script src="static/js/breakpoints.min.js"></script>
+		<script src="static/js/util.js"></script>
+		<script src="static/js/main.js"></script>
+    </body>
+</html>
+    
+ 

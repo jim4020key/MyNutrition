@@ -1,0 +1,322 @@
+<html>
+    <head>
+        <title>MYNUTRITION</title>
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+    </head>
+    <style>
+        .chart:not(main){
+        background-color: rgba( 255, 255, 240, 1);
+	    }
+        .chart2:not(main){
+        background-color: rgba( 255, 255, 240, 1);
+        padding: 50 50 50 50;
+        }
+    </style>
+
+    <body class="is-preload">
+        <div id="wrapper">
+            <!-- Header -->
+					<header id="header" class="alt">
+						<a href="/" class="logo"><strong>SMWU</strong> <span>Software</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+            <!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="/">Home</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="/logout" class="button fit">Logout</a></li>
+						</ul>
+					</nav>
+            <!-- Main -->
+					<div id="main" class="alt">
+						<!-- One -->
+                                <section id="one">
+								    <div class="inner">
+                                        <header class="major">
+                                            <h1>영양소 분석</h1>
+                                        </header>
+                                        <div class="table">
+                                            <table class="wrapper">
+                                                <thead>
+                                                    <tr>
+                                                        <th>구분</th>
+                                                        <th>Energy</th><th>Protein</th><th>Fat</th><th>Carbonhydrate</th><th>Dietary Fiber</th><th>Calcium</th><th>Iron </th><th>Magnesium</th><th>Phosphorus</th><th>Potassium</th><th>Sodium</th><th>Zinc</th><th>Manganese</th><th>Selenium</th><th>Vitamin_B6</th><th>Vitamin_E</th><th>Vitamin_K</th><th>Vitamin_B12</th><th>Riboflavin</th><th>Niacin</th><th>Total_Vitamin_C</th><th>Folate</th><th>Vitamin_A</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>섭취</td>
+                                                        <td>{{my_list[0]}}</td><td>{{my_list[1]}}</td><td>{{my_list[2]}}</td><td>{{my_list[3]}}</td><td>{{my_list[4]}}</td><td>{{my_list[5]}}</td><td>{{my_list[6]}}</td><td>{{my_list[7]}}</td><td>{{my_list[8]}}</td><td>{{my_list[9]}}</td><td>{{my_list[10]}}</td><td>{{my_list[11]}}</td><td>{{my_list[12]}}</td><td>{{my_list[13]}}</td><td>{{my_list[14]}}</td><td>{{my_list[15]}}</td><td>{{my_list[16]}}</td><td>{{my_list[17]}}</td><td>{{my_list[18]}}</td><td>{{my_list[19]}}</td><td>{{my_list[20]}}</td><td>{{my_list[21]}}</td><td>{{my_list[22]}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>필요</td>
+                                                        <td>{{r_list[0]}}</td><td>{{r_list[1]}}</td><td>{{r_list[2]}}</td><td>{{r_list[3]}}</td><td>{{r_list[4]}}</td><td>{{r_list[5]}}</td><td>{{r_list[6]}}</td><td>{{r_list[7]}}</td><td>{{r_list[8]}}</td><td>{{r_list[9]}}</td><td>{{r_list[10]}}</td><td>{{r_list[11]}}</td><td>{{r_list[12]}}</td><td>{{r_list[13]}}</td><td>{{r_list[14]}}</td><td>{{r_list[15]}}</td><td>{{r_list[16]}}</td><td>{{r_list[17]}}</td><td>{{r_list[18]}}</td><td>{{r_list[19]}}</td><td>{{r_list[20]}}</td><td>{{r_list[21]}}</td><td>{{r_list[22]}}</td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="chart2" id="container" style="height: 100%"></div><br>
+                                        <div class="chart" id="container2" style="height: 100%"></div><br>
+                                        <div class="chart" id="container3" style="height: 50%"></div>
+                                    <!---<p>
+                                            부족 영양소<br>
+                                            {{short}}<br>
+
+                                        </p>
+                                        <p>
+                                             과량섭취 영양소 <br>
+                                            {{extra}}
+                                        </p>--->
+                                    </div>
+                                </section>
+                    </div>
+            <!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="copyright">
+                                <li>김지민</li>
+								<li>정민서</li>
+							</ul>
+						</div>
+					</footer>
+        </div>
+        
+        <script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/jquery.scrolly.min.js"></script>
+		<script src="../static/js/jquery.scrollex.min.js"></script>
+		<script src="../static/js/browser.min.js"></script>
+		<script src="../static/js/breakpoints.min.js"></script>
+		<script src="../static/js/util.js"></script>
+		<script src="../static/js/main.js"></script>
+        
+        <div class="pie">
+        <!--<div id="container2" style="height: 100% ; background-color= white;"></div>-->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom2 = document.getElementById("container2");
+var myChart2 = echarts.init(dom2);
+var app2 = {};
+
+var option2;
+var nutrition_list = '{{nutrition_list}}';
+var topid = {{topid}};
+var my_list = {{my_list}};
+
+var nutrition_list2 = ['Energy', 'Protein', 'Fat', 'Carbohydrate', 'Dietary_Fiber', 'Calcium', 'Iron', 'Magnesium', 'Phosphorus', 'Potassium', 'Sodium', 
+                      'Zinc', 'Manganese',  'Selenium', 'Vitamin_B6', 'Vitamin_E', 'Vitamin_K', 'Vitamin_B12', 'Riboflavin', 'Niacin', 'Total_Vitamin_C', 'Folate', 'Vitamin_A'];
+//nutrition_list2 = nutrition_list2.replace("]","");
+//nutrition_list2 = nutrition_list2.split(",");
+        
+            
+
+option2 = {
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        top: '5%',
+        left: 'center'
+    },
+    series: [
+        {
+            name: '섭취 영양소 Top5',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+                borderRadius: 10,
+                borderColor: '#FFFAF0',
+                borderWidth: 2
+            },
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '40',
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {value: my_list[topid[0]], name: nutrition_list2[topid[0]] },
+                {value: my_list[topid[1]], name:  nutrition_list2[topid[1]]},
+                {value: my_list[topid[2]], name: nutrition_list2[topid[2]]},
+                {value: my_list[topid[3]], name: nutrition_list2[topid[3]]},
+                {value: my_list[topid[4]], name: nutrition_list2[topid[4]]},
+            ]
+        }
+    ]
+};
+
+if (option2 && typeof option2 === 'object') {
+    myChart2.setOption(option2);
+}
+
+        </script>
+        </div>
+
+        <div class="bar">
+        <!--<div id="container" style="height: 100%"></div>-->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+
+        var option;
+
+
+
+        option = {
+            title: {
+                text: '부족한 영양소',
+                subtext: '충족 여부'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['섭취', '필요']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+            },
+            yAxis: {
+                type: 'category',
+                data:  ['Energy','Protein', 'Fat', 'Carbohydrate', 'Dietary_Fiber', 'Calcium', 'Iron', 'Magnesium', 'Phosphorus', 
+                'Potassium', 'Sodium', 'Zinc', 'Manganese', 'Selenium', 
+            'Vitamin_B6', 'Vitamin_E', 'Vitamin_K', 'Vitamin_B12', 'Riboflavin', 'Niacin', 'Total_Vitamin_C', 'Folate', 'Vitamin_A']
+            },
+            series: [
+                {
+                    name: '섭취',
+                    type: 'bar',
+                    data: {{my_list}}
+                },
+                {
+                    name: '필요',
+                    type: 'bar',
+                    data: {{r_list}}
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+    </script>
+    </div>
+        <div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom3 = document.getElementById("container3");
+var myChart3 = echarts.init(dom3);
+var app3 = {};
+
+var option3;
+
+
+
+option3 = {
+    tooltip: {
+        formatter: '{a} <br/>{b} : {c}%'
+    },
+    series: [{
+        name: 'Your Nutrition Score',
+        type: 'gauge',
+        detail: {
+            formatter: '{value}'
+        },
+        data: [{
+            value: 50,
+            name: 'SCORE'
+        }]
+    }]
+};
+
+if (option3 && typeof option3 === 'object') {
+    myChart3.setOption(option3);
+}
+
+        </script>
+            
+            
+        </div>
+        
+    </body>
+</html>
